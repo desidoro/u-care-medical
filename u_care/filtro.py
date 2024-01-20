@@ -67,7 +67,23 @@ def load_pdf(f):
     return doc
 
     """
+def list_bold_text(pdf_path):
+    pdf = fitz.open(pdf_path)
+    bold_texts = []
 
+    for page_number in range(len(pdf)):
+        page = pdf[page_number]
+        blocks = page.get_text("dict")["blocks"]
+        for b in blocks:
+            if "lines" in b:
+                for line in b["lines"]:
+                    for span in line["spans"]:
+                        print(span["font"])
+                        print(span["text"])
+                        #bold_texts.append()
+
+    pdf.close()
+    
 def load_pdf(f):
     #print("Sono entratata nella fun")
     doc = []  ## LISTA PER CONSERVARE I TESTI DELLE SEZIONI
@@ -171,7 +187,7 @@ if __name__ == '__main__':
     pdf_path = "./The_Renal_Drug_Handbook_The_Ultimate 1-20-30 (1).pdf"
     sections_text = load_pdf(pdf_path)
     antibiotics = set_antibiotics_dict(antibiotics, sections_text)
-    
+    ##list_bold_text(pdf_path) questa mi serve solo a vedere quale font usare
     ## STAMPO PER OGNI ANTIBIOTICO LE SEZIONI CHE MI INTERESSANO
     for antibiotic in antibiotics:
         #print(antibiotic)
