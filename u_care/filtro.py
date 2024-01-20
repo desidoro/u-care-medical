@@ -69,7 +69,6 @@ def load_pdf(f):
     """
 def list_bold_text(pdf_path):
     pdf = fitz.open(pdf_path)
-    bold_texts = []
 
     for page_number in range(len(pdf)):
         page = pdf[page_number]
@@ -187,7 +186,7 @@ if __name__ == '__main__':
     pdf_path = "./The_Renal_Drug_Handbook_The_Ultimate 1-20-30 (1).pdf"
     sections_text = load_pdf(pdf_path)
     antibiotics = set_antibiotics_dict(antibiotics, sections_text)
-    ##list_bold_text(pdf_path) questa mi serve solo a vedere quale font usare
+    ##list_bold_text(pdf_path) #questa mi serve solo a vedere quale font usare
     ## STAMPO PER OGNI ANTIBIOTICO LE SEZIONI CHE MI INTERESSANO
     for antibiotic in antibiotics:
         #print(antibiotic)
